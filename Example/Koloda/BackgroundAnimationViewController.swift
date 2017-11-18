@@ -28,6 +28,9 @@ class BackgroundAnimationViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //print("ASDASDASDASDAS")
+        let bk = BackEnd()
+        bk.setupDB()
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
         kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
         kolodaView.delegate = self
@@ -106,7 +109,12 @@ extension BackgroundAnimationViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return UIImageView(image: UIImage(named: "cards_\(index + 1)"))
+        let bk = BackEnd()
+        let new_card = bk.loadData(index + 1)
+        print(new_card.id)
+        print(new_card.name)
+        
+        return UIImageView(image: UIImage(named: "cards_\(new_card.id + 1)"))
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
