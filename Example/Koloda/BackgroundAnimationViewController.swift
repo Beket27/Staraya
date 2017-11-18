@@ -46,6 +46,7 @@ class BackgroundAnimationViewController: UIViewController {
     }
     
     @IBAction func rightButtonTapped() {
+        
         kolodaView?.swipe(.right)
     }
     
